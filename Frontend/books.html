@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <link rel="stylesheet" href="books.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/f75dde5b4d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="tab-column">
+            <i class="fa-solid fa-book" style="align-self: center; padding-top: 20px; padding-bottom: 20px; font-size: 60px; color: white;"></i>
+            <h1>E-Library</h1>
+            <div class="tab-container">
+                <a class="current-tab" href="books.html"><i class="fa-solid fa-book-open"></i>&nbsp; Books</a>
+                <a href="borrowers.html"><i class="fa-solid fa-cart-shopping"></i>&nbsp; Borrowers</a>
+                <a href="statistics.html"><i class="fa-solid fa-chart-simple"></i>&nbsp; Statistics</a>
+                <a href="books.html"><i class="fa-solid fa-users"></i>&nbsp; Users</a>
+                <a href="books.html"><i class="fa-solid fa-building"></i>&nbsp; Branches</a>
+                <a class="sign-out" href="signin.html"><i class="fa-solid fa-right-from-bracket"></i>&nbsp; Sign Out</a>
+            </div>
+        </div>
+        <div class="content-column">
+            <div class="head-container">
+                <div class="user-container">    
+                    <button class="user"><i class="fa-solid fa-user"></i></button>
+                    <div>
+                        <p class="name">Nguyễn Văn A</p>
+                        <p class="position">Admin</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-container">
+                <div class="function-container">               
+                    <button class="add-book" onclick="openAddBookPopup()"><i class="fa-solid fa-circle-plus"></i>Add Book</button>
+                    <div class="filter-container">
+                        <button class="available-books">Available Books</button>
+                        <button class="borrowed-books">Borrowed Books</button>
+                    </div>
+                    <div class="search-container">
+                        <div class="search-bar">
+                            <div id="select">
+                                <p id="category">ID</p>
+                                <i class="fa-solid fa-caret-down"></i>
+                                <ul id="list">
+                                    <li class="options">ID</li>
+                                    <li class="options">Name</li>
+                                    <li class="options">Author</li>
+                                    <li class="options">Type</li>
+                                </ul>
+                            </div>
+                            <input type="text" placeholder="Search">
+                        </div>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <col style="width: 5%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                        <col style="width: 10%;">
+                        <col style="width: 15%;">
+                        <col style="width: 10%;">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Author</th>
+                                <th>Type</th>
+                                <th>Quantity</th>
+                                <th>Availability</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>1</td>
+                            <td>A</td>
+                            <td>A</td>
+                            <td>A</td>
+                            <td>A</td>
+                            <td>A</A>
+                            <td>
+                                <button onclick="openUpdateBookPopup()"><i class="fa-solid fa-pen"></i></button>
+                                <button onclick="openDeleteBookPopup()"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                            <tr>
+                            <td>2</td>
+                            <td>A</td>
+                            <td>A</td>
+                            <td>A</td>
+                            <td>A</A>
+                            <td>A</A>
+                            <td>
+                                <button onclick="openUpdateBookPopup()"><i class="fa-solid fa-pen"></i></button>
+                                <button onclick="openDeleteBookPopup()"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal">
+        <div class="popup-container">
+            <form class="popup" id="add-book-form">    
+                <h1><i class="fa-solid fa-circle-plus"></i>Add Book</h1>
+                <hr style="width:90%; height:5%; margin-bottom: 20px; color: black; background-color:black">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="text" name="author" placeholder="Author" required>
+                <input type="text" name="type" placeholder="Type" required>
+                <input type="number" name="quantity" placeholder="Quantity" required>
+                <div class="button-container">
+                    <button class="cancel" onclick="closeAddBookPopup()">Cancel</button>
+                    <button type="submit" class="add" onclick="closeAddBookPopup()">Add</button>
+                </div>
+            </form>
+            <form class="popup" id="update-book-form">
+                <h1><i class="fa-solid fa-pen"></i>Update Book</h1>
+                <hr style="width:90%; height:5%; margin-bottom: 20px; color: black; background-color:black">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="text" name="author" placeholder="Author" required>
+                <input type="text" name="type" placeholder="Type" required>
+                <input type="number" name="quantity" placeholder="Quantity" required>
+                <div class="status-container">
+                    <div>
+                        <input type="radio" id="available" name="status" value="Available">
+                        <label for="available">Available</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="borrowed" name="status" value="Borrowed">
+                        <label for="borrowed">Borrowed</label>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button class="cancel" onclick="closeUpdateBookPopup()">Cancel</button>
+                    <button type="submit" class="update" onclick="closeUpdateBookPopup()">Update</button>
+                </div>
+            </form>
+            <form class="popup" id="delete-book-form">
+                <h1><i class="fa-solid fa-trash"></i>Delete Book</h1>
+                <hr style="width:90%; height:5%; margin-bottom: 20px; color: black; background-color:black">
+                <p>Are you certain you wish to proceed with the deletion of the selected entry?</p>
+                <div class="button-container">
+                    <button class="cancel" onclick="closeDeleteBookPopup()">Cancel</button>
+                    <button type="submit" class="confirm" onclick="closeDeleteBookPopup()">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        let select = document.getElementById("select");
+        let list = document.getElementById("list");
+        let category = document.getElementById("category");
+        let options = document.getElementsByClassName("options");
+
+        select.onclick = function(){
+            list.classList.toggle("open");
+        }
+
+        for(option of options){
+            option.onclick = function(){
+                category.innerHTML = this.innerHTML;
+            }
+        }
+
+        function openAddBookPopup() {
+        document.getElementById("modal").style.display = "block";
+        document.getElementById("add-book-form").style.display = "flex";
+        }
+
+        function closeAddBookPopup() {
+        document.getElementById("modal").style.display = "none";
+        document.getElementById("add-book-form").style.display = "none";
+        }
+
+        function openUpdateBookPopup() {
+        document.getElementById("modal").style.display = "block";
+        document.getElementById("update-book-form").style.display = "flex";
+        }
+
+        function closeUpdateBookPopup() {
+        document.getElementById("modal").style.display = "none";
+        document.getElementById("update-book-form").style.display = "none";
+        }
+
+        function openDeleteBookPopup() {
+        document.getElementById("modal").style.display = "block";
+        document.getElementById("delete-book-form").style.display = "flex";
+        }
+
+        function closeDeleteBookPopup() {
+        document.getElementById("modal").style.display = "none";
+        document.getElementById("delete-book-form").style.display = "none";
+        }
+    </script>
+</body>
+</html>
